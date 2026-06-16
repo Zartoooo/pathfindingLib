@@ -1,0 +1,21 @@
+{
+  "generator": "retain_lines",
+
+  "lua_extension": "luau",
+
+  "bundle": {
+    "modules_identifier": "_MODULES",
+
+    "require_mode": {
+      "name": "path"
+    }
+  },
+
+  "rules": [
+    "remove_spaces",
+    "remove_nil_declaration",
+    "compute_expression",
+    "remove_unused_if_branch",
+    "filter_after_early_return"
+  ]
+}
