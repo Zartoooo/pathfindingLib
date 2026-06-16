@@ -1,0 +1,1 @@
+local _MODULES={cache={}}do do local function __modImpl()return function(Start,End)local v=Start-End return v.x*v.x+v.y*v.y+v.z*v.z end end function _MODULES.a()local v=_MODULES.cache.a if not v then v={c=__modImpl()}_MODULES.cache.a=v end return v.c end end end local Pathfinder={}local GetHeuristic=_MODULES.a()return Pathfinder

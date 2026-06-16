@@ -6,7 +6,7 @@
     {
       "label": "Compile",
       "type": "shell",
-      "command": "darklua process src/main.luau build/output.luau -c darklua.json",
+      "command": "darklua process source/main.luau build/output.luau -c darklua.json",
       "problemMatcher": ["$python"]
     }
   ]

@@ -1,4 +1,6 @@
 local GetHeuristic = require("./getheuristic");
+local Raycaster = require("@lib/raycaster");
+
 local NODE_SCALE = 5; -- studs
 
 local Node = {};
@@ -49,6 +51,11 @@ function Node:GetNeighbors(): {[number]: Node}
     end
 
     return neighbors;
+end
+
+-- raycasts a ray from center of self to center of node
+function Node:CanGoTo(node: Node)
+
 end
 
 return Node;

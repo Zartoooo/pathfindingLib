@@ -1,5 +1,5 @@
 {
-  "generator": "retain_lines",
+  "generator": { "name": "dense", "column_span": 9999 },
 
   "lua_extension": "luau",
 
@@ -7,13 +7,17 @@
     "modules_identifier": "_MODULES",
 
     "require_mode": {
-      "name": "path"
+      "name": "path",
+      "sources": {
+        "@lib": "./lib"
+      }
     }
   },
 
   "rules": [
     "remove_spaces",
     "remove_types",
+    "remove_comments",
     "remove_nil_declaration",
     "compute_expression",
     "remove_unused_if_branch",
