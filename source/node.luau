@@ -23,6 +23,7 @@ function Node.new(Position: Vector3): Node
     self.Scale = Vector3.new(NODE_SCALE,NODE_SCALE,NODE_SCALE);
     self.G = 0;
     self.H = 000;
+    self.Parent = nil;
     
     setmetatable(self, Node);
     NodeList[Position] = self;
