@@ -13,6 +13,7 @@
 
   "rules": [
     "remove_spaces",
+    "remove_types",
     "remove_nil_declaration",
     "compute_expression",
     "remove_unused_if_branch",
