@@ -16,12 +16,14 @@ export type Node = typeof(setmetatable({} :: NodeData, Node));
 local NodeList: {[Vector3]: Node} = {};
 
 
-function Node.new(Position: Vector3, Scale: Vector3): Node
+function Node.new(Position: Vector3): Node
     local self = {};
 
     self.Position = Position;
-    self.Scale = Scale;
-
+    self.Scale = Vector3.new(NODE_SCALE,NODE_SCALE,NODE_SCALE);
+    self.G = 0;
+    self.H = 000;
+    
     setmetatable(self, Node);
     NodeList[Position] = self;
     return self;
@@ -45,7 +47,7 @@ function Node:GetNeighbors(): {[number]: Node}
 
     for _, offset in offsets do
         local neighbor = Node.At(self.Position + offset);
-        if neighbor then
+        if neighbor and self:CanGoTo(neighbor) then
             table.insert(neighbors, neighbor);
         end
     end
@@ -53,9 +55,21 @@ function Node:GetNeighbors(): {[number]: Node}
     return neighbors;
 end
 
--- raycasts a ray from center of self to center of node
-function Node:CanGoTo(node: Node)
+function Node:GetFCost(): number
+    return self.G + self.H;
+end 
 
+-- raycasts a ray from center of self to center of node
+function Node:CanGoTo(node: Node): boolean
+    local d = math.sqrt(GetHeuristic(self.Position, node.Position));
+
+    local raycastresult = Raycaster:RaycastTo(self.Position, node.Position, d);
+
+    if raycastresult.Position == d then
+        return true;
+    else
+        return false;
+    end 
 end
 
 return Node;
